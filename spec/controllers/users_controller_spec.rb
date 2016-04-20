@@ -24,11 +24,12 @@ RSpec.describe UsersController, type: :controller do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: FFaker::Name.name }
+    { email: FFaker::Internet.email, password: '12345678',
+       password_confirmation: '12345678' }
   }
 
   let(:invalid_attributes) {
-    { name: nil }
+    { email: nil }
   }
 
   # This should return the minimal set of values that should be in the session
