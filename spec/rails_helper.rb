@@ -12,6 +12,7 @@ require 'database_cleaner'
 require 'capybara/rspec'
 require 'capybara/webkit'
 require 'shoulda/matchers'
+require 'carrierwave/test/matchers'
 require 'faker'
 require 'pry'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -83,6 +84,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryGirl::Syntax::Methods
+  config.include CarrierWave::Test::Matchers, type: :uploader
   #config.include Devise::TestHelpers, type: :controller
   #config.include Devise::TestHelpers, type: :view
   config.wait_timeout = 5 # seconds, rspec-wait

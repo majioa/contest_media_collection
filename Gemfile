@@ -38,7 +38,11 @@ gem 'slim-rails'
 
 gem 'devise'
 
+gem 'carrierwave'
+gem 'rmagick'
+
 group :development, :test do
+   gem 'rspec-rails', '~> 3.1'
    gem 'pry-rails'
    gem 'factory_girl_rails'
    gem 'faker'
@@ -47,7 +51,6 @@ group :development, :test do
 end
 
 group :test do
-   gem 'rspec-rails', '~> 3.1'
    gem 'rspec-wait'
    gem 'shoulda-matchers', '~> 3.1.1'
    gem 'database_cleaner'

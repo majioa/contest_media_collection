@@ -24,6 +24,8 @@ RSpec.describe User, type: :model do
       it { expect(subject).to have_db_column(:last_sign_in_at).of_type(:datetime) }
 
       it { expect(subject).to have_db_column(:sign_in_count).of_type(:integer) }
+
+      it { expect(subject).to have_many(:items) }
    end
 
    # NOTE: for matchers see https://github.com/rspec/rspec-rails
