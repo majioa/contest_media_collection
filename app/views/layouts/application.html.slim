@@ -14,7 +14,7 @@ html
             = menu_item "Collection", items_path
          = menu_group pull: :right do
             - if current_user
-               = menu_item "Sign Out", destroy_user_session_path
+               = menu_item "Sign Out", destroy_user_session_path, method: :delete
             - else
                = form_for :user, url: user_session_path(:user), html: {class: "navbar-form pull-right"} do |f|
                   p = f.text_field :email

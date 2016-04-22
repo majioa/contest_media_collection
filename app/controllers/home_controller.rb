@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
          render "items/index"
       else
-         render nothing: true
+         render text: nil, layout: true
       end
    end
 end
