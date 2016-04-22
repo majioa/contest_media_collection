@@ -1,9 +1,19 @@
-=== RSpec / Spring
+## Image Gallery
 
-    $ rails g rspec:install
-    $ bundle exec spring binstub --all
+to install all the dependencies just issue
 
-=== Models
+    $ bundle
 
-    $ rails g model User name:string
+Setup database
 
+    $ rake db:create db:migrate
+
+Run server
+
+    $ bundle exec rails s
+
+### Testing
+
+    $ RAILS_ENV=test rake db:create db:migrate
+
+    $ rspec
