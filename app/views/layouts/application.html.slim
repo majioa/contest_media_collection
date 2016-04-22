@@ -20,6 +20,7 @@ html
                   = f.text_field :email, class: 'form-control', placeholder: 'Email'
                   = f.password_field :password, class: 'form-control', placeholder: 'Password'
                   = f.submit "Sign in", class: 'btn'
+                  = link_to 'Sign up', new_user_registration_path, class: 'btn'
       .container
          p.notice.bg-info = notice
          p.alert.bg-danger = alert
