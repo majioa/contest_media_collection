@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   # GET /collection TODO
   # GET /collection.json
   def collection
-    @user = find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
     @items = @user.items.decorate
 
     render :index
@@ -71,7 +71,13 @@ class ItemsController < ApplicationController
 
   def render_success
     respond_to do |format|
-      format.html { redirect_to @item, notice: t(action_name) }
+      format.html do
+         if @item.persisted?
+            redirect_to @item, notice: t("controllers.items.#{action_name}")
+         else
+            redirect_to :items
+         end
+      end
       format.json { render :show, status: :created, location: @item }
     end
   end

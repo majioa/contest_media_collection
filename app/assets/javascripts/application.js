@@ -12,5 +12,50 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require twitter/bootstrap
 //= require_tree .
+//
+//= require blueimp-gallery
+//= require blueimp-gallery-fullscreen
+//= require blueimp-gallery-indicator
+//= require blueimp-gallery-video
+//= require blueimp-gallery-youtube
+//= require jquery.blueimp-gallery
+//= require bootstrap-image-gallery
+//
+
+
+$(document).ready(function() {
+   function asyncEvent() {
+      var dfd = jQuery.Deferred();
+
+      // Resolve after a random interval
+      setTimeout(function() {
+         dfd.resolve( "update" );
+      }, Math.floor( 1000 ));
+
+      return dfd.promise();
+   }
+
+   $('#links a.item').popover({html: true});
+
+   $('#links a.item').mouseenter( function() {
+      tmpl = $('.template');
+      in_link = $(this).attr('data-in');
+      out_link = $(this).attr('data-out');
+      tmpl.children('form').attr('action', in_link);
+      tmpl.children('a').attr('href', out_link);
+      $(this).attr('data-content', tmpl.html());
+      $(this).popover('show');
+   });
+
+   queue = [];
+
+   $('#links a.item').mouseleave( function() {
+      queue.push($(this));
+      $.when( asyncEvent() ).then( function( status ) {
+         alink = queue.shift();
+         alink.popover('hide');
+      });
+   });
+});

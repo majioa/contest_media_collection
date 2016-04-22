@@ -9,6 +9,7 @@ RSpec.describe "items/index", type: :view do
 
   it "renders a list of items" do
     render
-    assert_select "li", :text => "Link".to_s, :count => 2
+    assert_select "img", :alt => "Link".to_s, :count => 2
+    assert_select "img", :title => "Link".to_s, :count => 2
   end
 end

@@ -1,11 +1,27 @@
 doctype html
 html
    head
-      title RorTemplate
+      title Items Collection
       = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
       = javascript_include_tag 'application', 'data-turbolinks-track': true
       = csrf_meta_tags
    body
-      p.notice = notice
-      p.alert = alert
-      == yield
+      = nav_bar fixed: :top, brand: "Image Gallery", responsive: true do
+         = menu_group do
+            = menu_item "Home", root_path
+            = menu_divider
+            = menu_item "Users", users_path
+            = menu_item "Collection", items_path
+         = menu_group pull: :right do
+            - if current_user
+               = menu_item "Sign Out", destroy_user_session_path
+            - else
+               = form_for :user, url: user_session_path(:user), html: {class: "navbar-form pull-right"} do |f|
+                  p = f.text_field :email
+                  p = f.password_field :password
+                  p = f.submit "Sign in"
+      .container
+         p.notice.bg-info = notice
+         p.alert.bg-danger = alert
+         br
+         == yield

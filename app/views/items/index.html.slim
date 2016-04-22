@@ -1,15 +1,61 @@
 h1 Collection
 
-p Share
-= link_to collection_path(@user)
-
-ul
-   - @items.each do |item|
-      li
-         = item.thumb
-         br
-         = item.description
-         = button_to '[x]', item, data: {confirm: 'Are you sure?'}, method: :delete
+button.btn.btn-primary type="button" data-toggle="modal" data-target="#share-modal" Share
 - if current_user == @user
-   br
-   = link_to 'New Item', new_item_path
+   = link_to 'New Item', new_item_path, class: 'btn btn-primary'
+
+.modal.fade#share-modal tabindex="-1" role="dialog" aria-labelledby="share-modal-label"
+   .modal-dialog role="document"
+      .modal-content
+         .modal-header
+            button.close type="button" data-dismiss="modal" aria-label="Close"
+               span aria-hidden="true" &times;
+            h4.modal-title#share-modal-label Share link, just copy it
+         .modal-body
+            input.form-control value=collection_url(@user)
+         .modal-footer
+
+
+.modal.fade#remove-modal tabindex="-1" role="dialog" aria-labelledby="remove-modal-label"
+   .modal-dialog role="document"
+      .modal-content
+         .modal-header
+            button.close type="button" data-dismiss="modal" aria-label="Close"
+               span aria-hidden="true" &times;
+            h4.modal-title#remove-modal-label Do you wish to remove the item?
+         .modal-body
+            a.btn href="#" role="button" Yes
+            a.btn.btn-default href="#" role="button" No
+         .modal-footer
+
+
+#blueimp-gallery.blueimp-gallery data-use-bootstrap-modal="false"
+   .slides
+   h3.title
+   a.prev ‹
+   a.next ›
+   a.close ×
+   a.play-pause
+   ol.indicator
+   .modal.fade
+      .modal-dialog
+         .modal-content
+            .modal-header
+               button.close type="button" aria-hidden="true" &times;
+               h4.modal-title
+            .modal-body.next
+            .modal-footer
+               button.btn.btn-default.pull-left.prev(type="button")
+                  i.glyphicon.glyphicon-chevron-left
+                  Previous
+               button.btn.btn-primary.next(type="button")
+                  Next
+                  i.glyphicon.glyphicon-chevron-right
+#links
+   - @items.each do |item|
+      = item.thumb(title: item.description, 'data-gallery': '')
+
+.hidden.template
+   - if @items.any?
+      = button_to '× Remove', @items.first, data: {confirm: 'Are you sure?'}, method: :delete, form: { style: 'display: inline;' }, class: 'btn btn-danger'
+      = link_to '> Follow', @items.first.link_to, class: 'btn btn-primary'

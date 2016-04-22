@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  controllers:
+    items:
+      create: 'Item successfully created'
+      update: 'Item successfully updated'
+      destroy: 'Item successfully destroyed'
+    users:
+      create: 'User successfully created'
+      update: 'User successfully updated'
+      destroy: 'User successfully destroyed'
