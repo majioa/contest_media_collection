@@ -18,3 +18,5 @@
 *~
 *.sw*
 *.log
+
+/public/uploads

@@ -85,8 +85,9 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include CarrierWave::Test::Matchers, type: :uploader
-  #config.include Devise::TestHelpers, type: :controller
-  #config.include Devise::TestHelpers, type: :view
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
+
   config.wait_timeout = 5 # seconds, rspec-wait
 
   config.before(:suite) do
@@ -94,9 +95,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-#  config.before(:each, type: :controller) do |example|
-#    @request.env["devise.mapping"] = Devise.mappings[:user]
-#  end
+  config.before(:each, type: :controller) do |example|
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
 
   config.before(:each) do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction

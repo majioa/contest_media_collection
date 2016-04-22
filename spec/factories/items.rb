@@ -1,14 +1,15 @@
 FactoryGirl.define do
   factory :item do
     description nil
-  end
-
-  factory :link, parent: :item, class: :Link do
-    description "Link"
+    association :user
     source { Faker::Internet.url }
   end
 
-  factory :image, parent: :item, class: :Image do
+  factory :link, parent: :item do
+    description "Link"
+  end
+
+  factory :image, parent: :item do
     description "Image"
     url {
        sample_image_path = 'spec/fixtures/images/book.jpg'

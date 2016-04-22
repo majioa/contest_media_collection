@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
+
+  resources :items, only: [:index, :show, :new, :create, :destroy]
+  get ':id' => 'items#collection', as: :collection, :id => /\d+/
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

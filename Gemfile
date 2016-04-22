@@ -38,8 +38,10 @@ gem 'slim-rails'
 
 gem 'devise'
 
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: 'a2c93fe'
 gem 'rmagick'
+
+gem 'ruby-filemagic'
 
 group :development, :test do
    gem 'rspec-rails', '~> 3.1'

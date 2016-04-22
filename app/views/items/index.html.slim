@@ -1,0 +1,15 @@
+h1 Collection
+
+p Share
+= link_to collection_path(@user)
+
+ul
+   - @items.each do |item|
+      li
+         = item.thumb
+         br
+         = item.description
+         = button_to '[x]', item, data: {confirm: 'Are you sure?'}, method: :delete
+- if current_user == @user
+   br
+   = link_to 'New Item', new_item_path

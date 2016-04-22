@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ImageUploader, type: :uploader do
   context 'default values' do
-    it { expect(subject.thumb.url).to be_eql('/thumb_default.jpg') }
+    it { expect(subject.thumb.url).to be_eql('/assets/thumb_default.jpg') }
   end
 
   context 'validations' do

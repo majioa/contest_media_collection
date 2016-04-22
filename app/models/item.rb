@@ -3,5 +3,13 @@ class Item < ActiveRecord::Base
 
    mount_uploader :url, ImageUploader
 
-   validates :type, presence: true
+   validates :user_id, :source, presence: true
+
+   before_save :ensure_descripiton
+
+   def ensure_descripiton
+      if self.description.blank?
+         self.description = File.basename(self.source)
+      end
+   end
 end

@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: a2c93fe1a9d3a3f60d1662e5ec34fdba7bf2b304
+  ref: a2c93fe
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,11 +60,6 @@ GEM
     capybara-webkit (1.8.0)
       capybara (>= 2.3.0, < 2.7.0)
       json
-    carrierwave (0.11.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -172,6 +177,7 @@ GEM
     rspec-support (3.4.1)
     rspec-wait (0.0.8)
       rspec (>= 2.11, < 3.5)
+    ruby-filemagic (0.7.1)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -227,7 +233,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   capybara-webkit
-  carrierwave
+  carrierwave!
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -241,6 +247,7 @@ DEPENDENCIES
   rmagick
   rspec-rails (~> 3.1)
   rspec-wait
+  ruby-filemagic
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.1.1)
