@@ -69,7 +69,13 @@ class UsersController < ApplicationController
 
   def render_success
     respond_to do |format|
-      format.html { redirect_to @user, notice: t("controllers.users.#{action_name}") }
+      format.html do
+         if @user.persisted?
+            redirect_to @user, notice: t("controllers.users.#{action_name}")
+         else
+            redirect_to :users
+         end
+      end
       format.json { render :show, status: :created, location: @user }
     end
   end
